@@ -1,0 +1,1615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Akeila S. Richter</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garant:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0D1B2A;
+    --navy-mid: #152438;
+    --champagne: #E8D5B0;
+    --champagne-light: #F5EDD8;
+    --teal: #00C9B1;
+    --teal-muted: #00A896;
+    --cream: #F7F3EC;
+    --slate: #8899A8;
+    --text-primary: #0D1B2A;
+    --text-secondary: #4A5568;
+    --border: rgba(13,27,42,0.12);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--text-primary);
+    background: #fff;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 0 2.5rem;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(13,27,42,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garant', serif;
+    font-size: 1.35rem;
+    font-weight: 400;
+    color: var(--champagne);
+    letter-spacing: 0.03em;
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(232,213,176,0.7);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--champagne); }
+
+  .nav-cta {
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--navy);
+    background: var(--teal);
+    padding: 0.5rem 1.25rem;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .nav-cta:hover { background: #00b09a; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--navy);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 6rem 5rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 55%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0,201,177,0.06) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .hero-line {
+    position: absolute;
+    top: 0; left: 50%;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent, rgba(0,201,177,0.15), transparent);
+    pointer-events: none;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--teal);
+  }
+
+  .hero-name {
+    font-family: 'Cormorant Garant', serif;
+    font-size: clamp(3.5rem, 6vw, 5.5rem);
+    font-weight: 300;
+    line-height: 1.05;
+    color: #fff;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.25rem;
+  }
+
+  .hero-name span {
+    color: var(--champagne);
+    font-style: italic;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garant', serif;
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    font-weight: 400;
+    color: rgba(232,213,176,0.6);
+    letter-spacing: 0.04em;
+    margin-bottom: 2.5rem;
+    font-style: italic;
+  }
+
+  .hero-descriptor {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.6);
+    max-width: 440px;
+    margin-bottom: 3rem;
+  }
+
+  .hero-descriptor strong {
+    color: rgba(255,255,255,0.9);
+    font-weight: 500;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--teal);
+    color: var(--navy);
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.9rem 2rem;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .btn-primary:hover { background: #00b09a; transform: translateY(-1px); }
+
+  .btn-ghost {
+    display: inline-block;
+    color: var(--champagne);
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.9rem 1.5rem;
+    border: 1px solid rgba(232,213,176,0.25);
+    border-radius: 2px;
+    text-decoration: none;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .btn-ghost:hover { border-color: var(--champagne); background: rgba(232,213,176,0.05); }
+
+  .hero-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-portrait-frame {
+    position: relative;
+    width: 380px;
+    height: 480px;
+  }
+
+  .hero-portrait-bg {
+    position: absolute;
+    top: 20px; right: -20px;
+    width: 100%;
+    height: 100%;
+    border: 1px solid rgba(0,201,177,0.25);
+    border-radius: 2px;
+  }
+
+  .hero-portrait-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: var(--navy-mid);
+    border-radius: 2px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .portrait-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(160deg, #152438 0%, #1a3050 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .portrait-initials {
+    font-family: 'Cormorant Garant', serif;
+    font-size: 5rem;
+    font-weight: 300;
+    color: var(--champagne);
+    letter-spacing: 0.1em;
+    opacity: 0.4;
+  }
+
+  .portrait-note {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .hero-tag {
+    position: absolute;
+    bottom: -20px; left: -20px;
+    background: var(--teal);
+    color: var(--navy);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.6rem 1.2rem;
+    border-radius: 2px;
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(255,255,255,0.3);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, rgba(0,201,177,0.5), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.8; }
+  }
+
+  /* ── SECTION WRAPPER ── */
+  section { position: relative; }
+
+  .section-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 6rem 2.5rem;
+  }
+
+  .section-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--teal-muted);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--teal-muted);
+  }
+
+  .section-heading {
+    font-family: 'Cormorant Garant', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--navy);
+    margin-bottom: 1.5rem;
+  }
+
+  .section-heading em {
+    font-style: italic;
+    color: var(--teal-muted);
+  }
+
+  /* ── ABOUT ── */
+  .about { background: var(--cream); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .about-bio p {
+    color: var(--text-secondary);
+    margin-bottom: 1.25rem;
+    font-size: 1.02rem;
+    line-height: 1.85;
+  }
+
+  .about-bio p:last-child { margin-bottom: 0; }
+
+  .about-bio strong { color: var(--text-primary); font-weight: 500; }
+
+  .about-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-top: 3rem;
+  }
+
+  .stat-cell {
+    background: var(--cream);
+    padding: 1.5rem;
+  }
+
+  .stat-number {
+    font-family: 'Cormorant Garant', serif;
+    font-size: 2.5rem;
+    font-weight: 500;
+    color: var(--navy);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+    color: var(--slate);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .about-interests {
+    margin-top: 2.5rem;
+  }
+
+  .interest-heading {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--slate);
+    margin-bottom: 1rem;
+  }
+
+  .interest-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tag {
+    display: inline-block;
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    background: rgba(13,27,42,0.06);
+    padding: 0.4rem 0.85rem;
+    border-radius: 100px;
+    border: 1px solid var(--border);
+  }
+
+  /* ── PIVOT ── */
+  .pivot { background: var(--navy); }
+
+  .pivot .section-label { color: var(--teal); }
+  .pivot .section-label::before { background: var(--teal); }
+  .pivot .section-heading { color: #fff; }
+  .pivot .section-heading em { color: var(--teal); }
+
+  .pivot-intro {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.6);
+    max-width: 640px;
+    margin-bottom: 4rem;
+    line-height: 1.85;
+  }
+
+  .pivot-intro strong { color: rgba(255,255,255,0.9); font-weight: 500; }
+
+  .pivot-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .pivot-card {
+    background: var(--navy);
+    padding: 2rem;
+    position: relative;
+  }
+
+  .pivot-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--teal);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .pivot-card:hover::before { opacity: 1; }
+
+  .pivot-icon {
+    font-size: 1.5rem;
+    color: var(--teal);
+    margin-bottom: 1.25rem;
+    display: block;
+    line-height: 1;
+  }
+
+  .pivot-card-title {
+    font-family: 'Cormorant Garant', serif;
+    font-size: 1.35rem;
+    font-weight: 400;
+    color: var(--champagne);
+    margin-bottom: 0.75rem;
+  }
+
+  .pivot-card-text {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.75;
+  }
+
+  /* ── CONSULTING ── */
+  .consulting { background: #fff; }
+
+  .consulting-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .consulting-body p {
+    color: var(--text-secondary);
+    margin-bottom: 1.25rem;
+    line-height: 1.85;
+  }
+
+  .services-list {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .service-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .service-dot {
+    width: 6px;
+    height: 6px;
+    min-width: 6px;
+    border-radius: 50%;
+    background: var(--teal);
+    margin-top: 0.55rem;
+  }
+
+  .service-text {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  .service-text strong { color: var(--text-primary); font-weight: 500; }
+
+  .clients-section { }
+
+  .clients-heading {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--slate);
+    margin-bottom: 1.5rem;
+  }
+
+  .client-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .client-badge {
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--navy);
+    background: var(--cream);
+    border: 1px solid var(--border);
+    padding: 0.45rem 0.9rem;
+    border-radius: 2px;
+  }
+
+  .quote-block {
+    background: var(--cream);
+    border-left: 3px solid var(--teal);
+    padding: 1.5rem 1.75rem;
+    border-radius: 0 2px 2px 0;
+    margin-top: 1rem;
+  }
+
+  .quote-text {
+    font-family: 'Cormorant Garant', serif;
+    font-size: 1.15rem;
+    font-style: italic;
+    color: var(--navy);
+    line-height: 1.65;
+  }
+
+  /* ── EVENTS ── */
+  .events { background: var(--cream); }
+
+  .events-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .events-body p {
+    color: var(--text-secondary);
+    margin-bottom: 1.25rem;
+    line-height: 1.85;
+  }
+
+  .events-founding {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .founding-year {
+    font-family: 'Cormorant Garant', serif;
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: var(--teal-muted);
+    line-height: 1;
+  }
+
+  .founding-text {
+    font-size: 0.82rem;
+    color: var(--slate);
+    line-height: 1.5;
+  }
+
+  .founding-divider {
+    width: 1px;
+    height: 40px;
+    background: var(--border);
+  }
+
+  .events-visual {
+    position: relative;
+  }
+
+  .events-card {
+    background: var(--navy);
+    padding: 2.5rem;
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .events-card::after {
+    content: 'KR';
+    position: absolute;
+    bottom: -1rem;
+    right: 1.5rem;
+    font-family: 'Cormorant Garant', serif;
+    font-size: 6rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.03);
+    letter-spacing: -0.05em;
+    pointer-events: none;
+  }
+
+  .events-card-label {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 1rem;
+  }
+
+  .events-card-quote {
+    font-family: 'Cormorant Garant', serif;
+    font-size: 1.5rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--champagne);
+    line-height: 1.45;
+    margin-bottom: 2rem;
+  }
+
+  .events-locations {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .location-tag {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.4);
+    border: 1px solid rgba(255,255,255,0.12);
+    padding: 0.3rem 0.7rem;
+    border-radius: 100px;
+  }
+
+  /* ── COMMUNITY ── */
+  .community { background: #fff; }
+
+  .community-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .community-body p {
+    color: var(--text-secondary);
+    margin-bottom: 1.25rem;
+    line-height: 1.85;
+  }
+
+  .affiliations {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .affiliation-item {
+    background: #fff;
+    padding: 1.25rem 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+    align-items: start;
+  }
+
+  .aff-org {
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: var(--navy);
+    margin-bottom: 0.2rem;
+  }
+
+  .aff-role {
+    font-size: 0.8rem;
+    color: var(--slate);
+  }
+
+  .aff-years {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--teal-muted);
+    white-space: nowrap;
+    margin-top: 0.15rem;
+  }
+
+  .community-philosophy {
+    background: var(--cream);
+    padding: 2.5rem;
+    border-radius: 2px;
+  }
+
+  .philosophy-heading {
+    font-family: 'Cormorant Garant', serif;
+    font-size: 1.15rem;
+    font-weight: 400;
+    color: var(--navy);
+    margin-bottom: 1rem;
+  }
+
+  .philosophy-text {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+  }
+
+  /* ── CONTACT ── */
+  .contact { background: var(--navy); overflow: hidden; }
+
+  .contact .section-label { color: var(--teal); }
+  .contact .section-label::before { background: var(--teal); }
+  .contact .section-heading { color: #fff; }
+
+  .contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
+  .contact-intro {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.9;
+    margin-bottom: 3rem;
+  }
+
+  .contact-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.06);
+    margin-bottom: 2.5rem;
+  }
+
+  .contact-item {
+    background: var(--navy);
+    padding: 1rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .contact-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 2px;
+    background: rgba(0,201,177,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 1rem;
+    color: var(--teal);
+  }
+
+  .contact-item-label {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.35);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.1rem;
+  }
+
+  .contact-item-value {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.8);
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .form-label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+  }
+
+  .form-input,
+  .form-textarea,
+  .form-select {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 2px;
+    color: rgba(255,255,255,0.85);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.88rem;
+    padding: 0.75rem 1rem;
+    transition: border-color 0.2s;
+    outline: none;
+    width: 100%;
+    -webkit-appearance: none;
+  }
+
+  .form-input:focus,
+  .form-textarea:focus,
+  .form-select:focus {
+    border-color: var(--teal);
+    background: rgba(0,201,177,0.04);
+  }
+
+  .form-textarea { min-height: 120px; resize: vertical; }
+
+  .form-select option { background: var(--navy); }
+
+  .form-submit {
+    background: var(--teal);
+    color: var(--navy);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+
+  .form-submit:hover { background: #00b09a; transform: translateY(-1px); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 2rem 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-logo {
+    font-family: 'Cormorant Garant', serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--champagne);
+    letter-spacing: 0.03em;
+  }
+
+  .footer-right {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.25);
+  }
+
+  /* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  nav { padding: 0 1.5rem; }
+  .nav-links { display: none; }
+
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 5rem 1.5rem 3rem;
+    min-height: auto;
+    text-align: center;
+  }
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-eyebrow {
+    justify-content: center;
+  }
+
+  .hero-eyebrow::before { display: none; }
+
+  .hero-descriptor { max-width: 100%; }
+
+  .hero-actions {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .hero-visual {
+    display: flex;
+    justify-content: center;
+    margin-top: 2.5rem;
+  }
+
+  .hero-portrait-frame {
+    width: 260px;
+    height: 320px;
+  }
+
+  .hero-tag { display: none; }
+
+  .section-inner { padding: 3rem 1.5rem; }
+
+  .about-grid,
+  .consulting-grid,
+  .events-layout,
+  .community-grid,
+  .contact-layout { grid-template-columns: 1fr; gap: 2rem; }
+
+  .about-stats { grid-template-columns: 1fr 1fr; }
+
+  .pivot-cards { grid-template-columns: 1fr; }
+
+  .events-card { margin-top: 0; }
+
+  .hero-name { font-size: 3rem; }
+
+  .section-heading { font-size: 1.75rem; }
+
+  footer { flex-direction: column; gap: 0.75rem; text-align: center; padding: 1.5rem; }
+
+  .form-row { grid-template-columns: 1fr; }
+
+  .kr-gallery { grid-template-columns: 1fr; }
+
+  .kr-thumbs { grid-template-columns: repeat(4, 1fr); }
+
+  .contact-layout { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .hero-name { font-size: 2.5rem; }
+
+  .hero-portrait-frame {
+    width: 200px;
+    height: 250px;
+  }
+
+  .about-stats { grid-template-columns: 1fr; }
+
+  .pivot-card { padding: 1.5rem; }
+
+  .section-inner { padding: 2.5rem 1rem; }
+
+  .nav-cta { font-size: 0.7rem; padding: 0.4rem 0.9rem; }
+
+  .hero-actions { flex-direction: column; align-items: center; }
+
+  .btn-primary, .btn-ghost { width: 100%; text-align: center; }
+
+  .kr-thumbs { grid-template-columns: repeat(2, 1fr); }
+
+  .client-badges { gap: 0.4rem; }
+
+  .client-badge { font-size: 0.72rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-line { animation: none; }
+  * { transition: none !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav aria-label="Main navigation">
+  <a href="#" class="nav-logo">Akeila S. Richter</a>
+  <ul class="nav-links">
+    <li><a href="#building">What I'm Building</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#events">Events</a></li>
+    <li><a href="#community">Community</a></li>
+    <li><a href="#consulting">Background</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Connect</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" aria-label="Introduction">
+  <div class="hero-line" aria-hidden="true"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Engineer · Health Tech Founder · Entrepreneur</p>
+    <h1 class="hero-name">Akeila<br><span>S. Richter</span></h1>
+    <p class="hero-title">Technology Founder &amp; Early Stage CTO</p>
+    <p class="hero-descriptor">
+      I am building at the intersection of health information and human decision-making. After 20 years advising national leaders, engineering complex systems, and building community, I am stepping fully into my most consequential chapter yet.
+    </p>
+    <div class="hero-actions">
+      <a href="#building" class="btn-primary">What I'm Building</a>
+      <a href="#about" class="btn-ghost">My Story</a>
+    </div>
+  </div>
+  <div class="hero-visual" aria-hidden="true">
+    <div class="hero-portrait-frame">
+      <div class="hero-portrait-bg"></div>
+      <div class="hero-portrait-inner">
+        <img src="akeila-hero.jpg" alt="Akeila S. Richter" style="width: 100%; height: 100%; object-fit: cover; object-position: top;">
+      </div>
+  </div>
+ <div class="hero-tag">Washington, DC</div>
+    </div>
+ </div>
+  <div class="hero-scroll" aria-hidden="true">
+    <div class="scroll-line"></div>
+    Scroll
+  </div>
+</section>
+
+<!-- WHAT I'M BUILDING / PIVOT -->
+<section class="pivot" id="building" aria-label="What I'm building">
+  <div class="section-inner">
+    <p class="section-label">Next chapter</p>
+    <h2 class="section-heading" style="color: #fff;">Building at the edge of<br><em>health & human decision-making</em></h2>
+    <p class="pivot-intro">
+      The data exists. Lab results, clinical notes, wearable metrics, and more health info are captured more than ever. Yet many people, especially <strong>millennials navigating significant life choices</strong>, can't access or interpret this data to impact their lives. The gap is not about content. It is an understanding and <strong>interpretation problem</strong>, costing people their agency over their health. I am building the bridge.
+    </p>
+    <div class="pivot-cards">
+      <div class="pivot-card">
+        <span class="pivot-icon" aria-hidden="true">⬡</span>
+        <div class="pivot-card-title">The Problem I Live In</div>
+        <p class="pivot-card-text">There is a widespread systemic gap in the flow of health information from clinical systems to the public. Many people do not know enough about key health factors like how their hormones influence their daily energy, mood, focus, and choices. We need to address this knowledge gap to better support individual health and well-being..</p>
+      </div>
+      <div class="pivot-card">
+        <span class="pivot-icon" aria-hidden="true">◈</span>
+        <div class="pivot-card-title">The Gap I'm Closing</div>
+        <p class="pivot-card-text">Electronic health records and consumer wellness tools exist in separate worlds. One holds the data; the other holds the attention. Neither speaks the language of the person in the middle, trying to make better decisions with incomplete information. That person deserves both.</p>
+      </div>
+      <div class="pivot-card">
+        <span class="pivot-icon" aria-hidden="true">◎</span>
+        <div class="pivot-card-title">Why I'm the One to Build It</div>
+        <p class="pivot-card-text">Twenty years engineering complex systems, a foundation in Human Psychology, and a career spent making critical information accessible to decision-makers at the highest levels. Now applied to the most personal health decisions people face every day.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about" aria-label="About Akeila">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div>
+        <p class="section-label">Background</p>
+        <h2 class="section-heading">Rooted in Chicago,<br>raised by <em>the world</em></h2>
+        <div class="about-stats">
+          <div class="stat-cell">
+            <div class="stat-number">B.S.</div>
+            <div class="stat-label">Industrial Engineering</div>
+          </div>
+          <div class="stat-cell">
+            <div class="stat-number">M.Eng.</div>
+            <div class="stat-label">Industrial & Information Systems Engineering</div>
+          </div>
+          <div class="stat-cell" style="grid-column: span 2;">
+            <div class="stat-number" style="font-size: 1.8rem;">Morgan State University</div>
+            <div class="stat-label">Baltimore, Maryland</div>
+          </div>
+        </div>
+
+        <div class="about-interests">
+          <p class="interest-heading">Beyond the work</p>
+          <div class="interest-tags">
+            <span class="tag">Travel</span>
+            <span class="tag">Hiking</span>
+            <span class="tag">Theater & Arts</span>
+            <span class="tag">Coffee & Tea</span>
+            <span class="tag">Beach</span>
+            <span class="tag">Family</span>
+            <span class="tag">Collaboration</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-bio">
+        <p>
+          Born in Chicago and raised across the globe thanks to parents in military service, Akeila S. Richter is fluent in navigating complex systems, whether geopolitical, organizational, or technological.
+        </p>
+        <p>
+          She holds a Bachelor of Science in Industrial Engineering and a Master of Engineering in Industrial & Information Systems Engineering from <strong>Morgan State University</strong>, complemented by deep studies in Human Psychology. The rare pairing of rigorous systems thinking with genuine human insight defines everything Akeila builds and leads.
+        </p>
+        <p>
+          Across every role she has held as an engineer, technical writer, organizer, and events entrepreneur, the through line has been the same. She sees the gap that others overlook and steps in to help build what should be there. That is a founder's instinct, and it has been present across every chapter of her career.
+        </p>
+        <p>
+          Today, Akeila is building her next chapter from Washington, DC, where she lives with her husband and daughter.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EVENTS -->
+<section class="events" id="events" aria-label="KR Events">
+  <div class="section-inner">
+    <div class="events-layout">
+      <div class="events-body">
+        <p class="section-label">KR Events</p>
+        <h2 class="section-heading">Celebrating excellence<br>in <em>community</em></h2>
+
+        <div class="events-founding">
+          <div class="founding-year">2008</div>
+          <div class="founding-divider"></div>
+          <div class="founding-text">Founded by Akeila</div>
+        </div>
+
+        <p>KR Events is a private community built around excellence, women, and communities that deserve better, as intentional about who it gathers as it is about everything it creates.</p>
+        <p>Every experience is designed around the ritual of gathering. Each detail, from the venue to the menu to the guest list, is curated toward a single purpose. Every person in the room leaves with something they did not have when they arrived. A spark, a laugh, a conversation that changes something, or simply the feeling of having been exactly where they were supposed to be.</p>
+        <p>Exceptional food, the right setting, and intentional company create the conditions for conversation and connection that would not happen anywhere else, uniting tastemakers, industry leaders, and community builders in moments that invite candor and innovative ideas and leave guests with a rare feeling of genuine recognition.</p>
+        <div style="margin-top: 2.5rem;">
+          <a href="#contact" class="btn-primary" style="display: inline-block; background: var(--teal); color: var(--navy);">Inquire About Events</a>
+        </div>
+      </div>
+	
+      <div class="events-visual">
+	<div style="margin-bottom: 1rem; width: 100%; aspect-ratio: 4/3; border-radius: 2px; overflow: hidden;">
+  	<img src="akeila-about.jpg" alt="Akeila S. Richter" style="width: 100%; height: 100%; object-fit: cover;">
+	</div>
+        <div class="events-card">
+          <p class="events-card-label">The KR Events Philosophy</p>
+          <p class="events-card-quote">"Hard work and good times belong together."</p>
+          <p style="font-size: 0.8rem; color: rgba(255,255,255,0.4); margin-bottom: 1.5rem; line-height: 1.7;">Invite-only events crafted for those who move through the world with intention, bringing together brilliant minds in settings as remarkable as the people in them.</p>
+          <p class="events-card-label" style="margin-bottom: 0.75rem;">Destinations include</p>
+          <div class="events-locations">
+            <span class="location-tag">Washington, DC</span>
+            <span class="location-tag">Los Angeles</span>
+            <span class="location-tag">New York</span>
+            <span class="location-tag">Miami</span>
+            <span class="location-tag">International</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EVENTS SLIDESHOW -->
+<section id="gallery" aria-label="KR Events Gallery" style="background: var(--navy); padding: 3rem 0;">
+  <style>
+    .kr-gallery {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+    .kr-featured {
+      position: relative;
+      aspect-ratio: 4/3;
+      border-radius: 2px;
+      overflow: hidden;
+      background: var(--navy-mid);
+    }
+    .kr-featured img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+      background: var(--navy-mid);
+      display: block;
+    }
+    .kr-thumbs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+    .kr-thumb {
+      aspect-ratio: 4/3;
+      border-radius: 2px;
+      overflow: hidden;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: border-color 0.2s, opacity 0.2s;
+      background: var(--navy-mid);
+    }
+    .kr-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+      background: var(--navy-mid);
+      display: block;
+    }
+    .kr-thumb:hover { opacity: 0.85; }
+    .kr-thumb.active { border-color: var(--teal); }
+    .kr-nav {
+      max-width: 1100px;
+      margin: 1rem auto 0;
+      padding: 0 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .kr-nav-arrows {
+      display: flex;
+      gap: 0.5rem;
+    }
+    .kr-arrow {
+      width: 36px;
+      height: 36px;
+      border-radius: 2px;
+      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(13,27,42,0.6);
+      color: rgba(255,255,255,0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .kr-arrow:hover { border-color: var(--teal); color: var(--teal); }
+    .kr-counter {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.35);
+      letter-spacing: 0.1em;
+    }
+    @media (max-width: 900px) {
+      .kr-gallery { grid-template-columns: 1fr; }
+      .kr-thumbs { grid-template-columns: repeat(4, 1fr); }
+    }
+  </style>
+
+  <div style="max-width: 1100px; margin: 0 auto; padding: 2rem 2.5rem 0;">
+    <p class="section-label" style="color: var(--teal);">KR Events</p>
+    <h2 class="section-heading" style="color: #fff; margin-bottom: 1.5rem;">Moments from<br><em>the experience</em></h2>
+  </div>
+
+  <div class="kr-gallery" id="krGallery">
+    <div class="kr-featured">
+      <img id="krFeatured" src="kr-event-01.jpg" alt="KR Events" style="transform: scaleX(-1);">
+    </div>
+    <div class="kr-thumbs" id="krThumbs">
+      <div class="kr-thumb active" data-index="0"><img src="kr-event-01.jpg" alt="KR Events 1" style="transform: scaleX(-1);"></div>
+      <div class="kr-thumb" data-index="1"><img src="kr-event-02.jpg" alt="KR Events 2"></div>
+      <div class="kr-thumb" data-index="2"><img src="kr-event-03.jpg" alt="KR Events 3"></div>
+      <div class="kr-thumb" data-index="3"><img src="kr-event-04.jpg" alt="KR Events 4"></div>
+    </div>
+  </div>
+
+  <div class="kr-nav">
+    <div class="kr-nav-arrows">
+      <button class="kr-arrow" id="krPrev">&#8592;</button>
+      <button class="kr-arrow" id="krNext">&#8594;</button>
+    </div>
+    <div class="kr-counter" id="krCounter">1 / 17</div>
+  </div>
+
+  <script>
+    (function() {
+      const photos = [
+        'kr-event-01.jpg','kr-event-02.jpg','kr-event-03.jpg','kr-event-04.jpg',
+        'kr-event-05.jpg','kr-event-06.jpg','kr-event-07.jpg','kr-event-08.jpg',
+        'kr-event-09.jpg','kr-event-10.jpg','kr-event-11.jpg','kr-event-12.jpg',
+        'kr-event-13.jpg','kr-event-14.jpg','kr-event-15.jpg','kr-event-16.jpg',
+        'kr-event-17.jpg'
+      ];
+
+      const featured = document.getElementById('krFeatured');
+      const thumbsContainer = document.getElementById('krThumbs');
+      const counter = document.getElementById('krCounter');
+      let current = 0;
+      let thumbStart = 0;
+
+      function updateFeatured(index) {
+        current = (index + photos.length) % photos.length;
+        featured.src = photos[current];
+        featured.alt = 'KR Events ' + (current + 1);
+	featured.style.transform = current === 0 ? 'scaleX(-1)' : '';
+        counter.textContent = (current + 1) + ' / ' + photos.length;
+        renderThumbs();
+      }
+
+      function renderThumbs() {
+        // Keep thumbStart window in sync with current
+        if (current < thumbStart) thumbStart = current;
+        if (current >= thumbStart + 4) thumbStart = current - 3;
+        thumbStart = Math.max(0, Math.min(thumbStart, photos.length - 4));
+
+        thumbsContainer.innerHTML = '';
+        for (let i = thumbStart; i < thumbStart + 4 && i < photos.length; i++) {
+          const div = document.createElement('div');
+          div.className = 'kr-thumb' + (i === current ? ' active' : '');
+          div.dataset.index = i;
+          const img = document.createElement('img');
+          img.src = photos[i];
+          img.alt = 'KR Events ' + (i + 1);
+          div.appendChild(img);
+          div.addEventListener('click', () => updateFeatured(i));
+          thumbsContainer.appendChild(div);
+        }
+      }
+
+      document.getElementById('krNext').addEventListener('click', () => updateFeatured(current + 1));
+      document.getElementById('krPrev').addEventListener('click', () => updateFeatured(current - 1));
+
+      renderThumbs();
+    })();
+  </script>
+</section>
+
+<!-- COMMUNITY -->
+<section class="community" id="community" aria-label="Community work">
+  <div class="section-inner">
+    <div class="community-grid" style="align-items: start;">
+      <div class="community-body">
+        <p class="section-label">Community</p>
+        <h2 class="section-heading">Advocacy rooted<br>in <em>understanding</em></h2>
+
+        <div style="width: 100%; aspect-ratio: 4/3; border-radius: 2px; overflow: hidden; margin-bottom: 2rem;">
+          <img src="akeila-community.jpg" alt="Akeila S. Richter community work" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+
+        <div class="affiliations" role="list" style="margin-top: 0;">
+          <div class="affiliation-item" role="listitem">
+            <div>
+              <div class="aff-org">Dress for Success Baltimore</div>
+              <div class="aff-role">Board of Directors · Chair of the Board</div>
+            </div>
+            <div class="aff-years">2011–2013</div>
+          </div>
+          <div class="affiliation-item" role="listitem">
+            <div>
+              <div class="aff-org">Hemophilia Federation of America</div>
+              <div class="aff-role">Nonprofit Client</div>
+            </div>
+            <div class="aff-years">2010–2019</div>
+          </div>
+          <div class="affiliation-item" role="listitem">
+            <div>
+              <div class="aff-org">Pan African American Film Festival</div>
+              <div class="aff-role">Volunteer</div>
+            </div>
+            <div class="aff-years">2015-2016</div>
+          </div>
+          <div class="affiliation-item" role="listitem">
+            <div>
+              <div class="aff-org">National Museum of Women in the Arts</div>
+              <div class="aff-role">Member</div>
+            </div>
+            <div class="aff-years">2023–Present</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="communityRight" style="display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <p style="color: var(--text-secondary); margin-bottom: 1.25rem; line-height: 1.85;">Akeila believes everyone wants something out of life, and that the structures within our society play a critical role in either facilitating or hindering those goals. Her background in human behavior and goal-oriented reasoning has shaped her commitment to ensuring these structures are more equitable and accessible for the many people who never have a say in how they are built.</p>
+          <p style="color: var(--text-secondary); margin-bottom: 1.25rem; line-height: 1.85;">For Akeila, community engagement is a natural extension of her work in engineering and entrepreneurship. The same instinct that drives her professionally, noticing gaps and stepping in to address them, shows up here too.</p>
+          <p style="color: var(--text-secondary); margin-bottom: 0; line-height: 1.85;">She welcomes opportunities to serve, advise, and collaborate on civil projects that prioritize community impact. If you are working on an initiative in this spirit, she would love to connect.</p>
+        </div>
+
+        <div style="background: var(--navy); padding: 2rem; border-radius: 2px; margin-top: 2rem;">
+          <p style="font-size: 0.72rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--teal); margin-bottom: 0.75rem;">Open to collaboration</p>
+          <p style="font-size: 0.88rem; color: rgba(255,255,255,0.55); line-height: 1.75; margin-bottom: 1.5rem;">Board service, advisory roles, speaking engagements, and civil projects in alignment with Akeila's values of equity, access, and human potential.</p>
+          <a href="#contact" class="btn-ghost" style="display: inline-block; font-size: 0.78rem;">Get in touch</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      function alignCommunityRight() {
+        const left = document.querySelector('.community-body');
+        const right = document.getElementById('communityRight');
+        const label = left.querySelector('.section-label');
+        const heading = left.querySelector('.section-heading');
+        if (!label || !heading || !right) return;
+        const labelH = label.offsetHeight + parseInt(getComputedStyle(label).marginBottom);
+        const headingH = heading.offsetHeight + parseInt(getComputedStyle(heading).marginBottom);
+        right.style.paddingTop = (labelH + headingH) + 'px';
+      }
+      alignCommunityRight();
+      window.addEventListener('resize', alignCommunityRight);
+    })();
+  </script>
+</section>
+
+<!-- CONSULTING (CREDENTIAL) -->
+<section class="consulting" id="consulting" aria-label="Professional background">
+  <div class="section-inner">
+    <p class="section-label">Professional background</p>
+    <h2 class="section-heading">Trusted at the<br>highest levels of <em>government</em></h2>
+
+   <div style="display: grid; grid-template-columns: 1fr 1.4fr; gap: 3rem; align-items: start; margin-top: 2.5rem;">
+
+  <!-- Left: both photos stacked -->
+  <div style="display: flex; flex-direction: column; gap: 1rem;">
+    <div>
+      <div style="width: 100%; background: var(--navy); border-radius: 2px; overflow: hidden; padding: 1rem;">
+        <img src="Akeila-photo1.jpg" alt="Akeila S. Richter presenting on Multi-Agent Systems"
+          style="width: 100%; height: auto; display: block; border-radius: 2px;">
+      </div>
+    <p style="font-size: 0.68rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); margin-top: 0.75rem;">Presenting on Multi-Agent Systems</p>
+    </div>
+
+    <div>
+      <div style="width: 100%; background: var(--navy); border-radius: 2px; overflow: hidden; padding: 1rem;">
+        <img src="Akeila-photo2.jpg" alt="Akeila S. Richter"
+          style="width: 100%; height: auto; max-height: 280px; display: block; object-fit: contain; object-position: top;">
+      </div>
+      <p style="font-size: 0.68rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); margin-top: 0.75rem;">Engineer. Author. Advisor.</p>
+    </div>
+  </div>
+
+  <!-- Right: copy and badges -->
+  <div>
+    <p style="color: var(--text-secondary); line-height: 1.85; margin-bottom: 1.25rem;">For over 20 years, Akeila's analytical and technical work has helped national leaders navigate significant and critical decisions. As a published author and engineer, she has advised on defense infrastructure, led technology transformation initiatives, and built a track record of solving complex problems where the stakes did not allow for anything less than accuracy.</p>
+    <p style="color: var(--text-secondary); line-height: 1.85; margin-bottom: 2rem;">That same standard of precision and accountability now drives her work as a health technology founder.</p>
+    <p class="clients-heading">Organizations served</p>
+    <div class="client-badges">
+      <span class="client-badge">Booz Allen Hamilton</span>
+      <span class="client-badge">Dept. of Justice</span>
+      <span class="client-badge">Boeing</span>
+      <span class="client-badge">FBI</span>
+      <span class="client-badge">Homeland Security</span>
+      <span class="client-badge">NASA</span>
+      <span class="client-badge">TSA</span>
+      <span class="client-badge">Dept. of Treasury</span>
+      <span class="client-badge">USDA</span>
+      <span class="client-badge">U.S. Government</span>
+    </div>
+  </div>
+
+</div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact" aria-label="Contact">
+  <div class="section-inner">
+    <div class="contact-layout">
+      <div>
+        <p class="section-label">Contact</p>
+        <h2 class="section-heading">Let's build together</h2>
+        <p class="contact-intro">I am always open to connecting with investors, collaborators, and partners who share a conviction that people deserve better access to their own health information. Reach out and let's explore what's possible.</p>
+
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="contact-icon" aria-hidden="true">⬡</div>
+            <div>
+              <div class="contact-item-label">Based in</div>
+              <div class="contact-item-value">Washington, DC</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon" aria-hidden="true">◈</div>
+            <div>
+              <div class="contact-item-label">Open to</div>
+              <div class="contact-item-value">Investment · Partnerships · Advisory · Events</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon" aria-hidden="true">◎</div>
+            <div>
+              <div class="contact-item-label">Connect</div>
+              <div class="contact-item-value">
+  <a href="https://www.linkedin.com/in/akeilarichter" target="_blank" style="color: inherit; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.3);">LinkedIn</a> · By introduction
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <form class="contact-form" onsubmit="handleSubmit(event)" novalidate aria-label="Contact form">
+          <div class="form-row">
+            <div class="form-field">
+              <label class="form-label" for="f-name">Name</label>
+              <input class="form-input" type="text" id="f-name" placeholder="Your name" autocomplete="name">
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="f-email">Email</label>
+              <input class="form-input" type="email" id="f-email" placeholder="your@email.com" autocomplete="email">
+            </div>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="f-message">Message</label>
+            <textarea class="form-textarea" id="f-message" placeholder="Tell me what you're working on..."></textarea>
+          </div>
+          <button type="submit" class="form-submit" id="submit-btn">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-right">© 2025 Akeila S. Richter · All rights reserved</div>
+</footer>
+
+<script>
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = document.getElementById('submit-btn');
+  btn.textContent = 'Message Sent ✓';
+  btn.style.background = '#00b09a';
+  btn.disabled = true;
+  setTimeout(() => {
+    btn.textContent = 'Send Message';
+    btn.style.background = '';
+    btn.disabled = false;
+  }, 4000);
+}
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+const nav = document.querySelector('nav');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 80) {
+    nav.style.background = 'rgba(13,27,42,0.97)';
+  } else {
+    nav.style.background = 'rgba(13,27,42,0.92)';
+  }
+});
+</script>
+</body>
+</html>
