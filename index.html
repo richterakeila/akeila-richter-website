@@ -1049,11 +1049,26 @@
   }
 
   /* ── RESPONSIVE ── */
-@media (max-width: 900px) { .hero::before { display: none; }
-.hero-line { display: none; }
+  .mobile-nav-link {
+    font-family: 'Cormorant Garant', serif;
+    font-size: 2rem;
+    font-weight: 300;
+    color: #fff;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: color 0.2s;
+  }
+  .mobile-nav-link:hover { color: var(--teal); }
+
+  @media (max-width: 900px) {
+    #mobileMenuBtn { display: block !important; }
+  }
+
+@media (max-width: 900px) {
+  .hero::before { display: none; }
+  .hero-line { display: none; }
   nav { padding: 0 1.5rem; }
   .nav-links { display: none; }
-
 
   .hero {
     grid-template-columns: 1fr;
@@ -1068,31 +1083,15 @@
     align-items: center;
   }
 
-  .hero-eyebrow {
-    justify-content: center;
-  }
-
+  .hero-eyebrow { justify-content: center; }
   .hero-eyebrow::before { display: none; }
-
   .hero-descriptor { max-width: 100%; }
-
-  .hero-actions {
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  .hero-visual {
-    display: flex;
-    justify-content: center;
-    margin-top: 2.5rem;
-  }
-
-  .hero-portrait-frame {
-    width: 260px;
-    height: 320px;
-  }
-
+  .hero-actions { justify-content: center; flex-wrap: wrap; }
+  .hero-visual { display: flex; justify-content: center; margin-top: 2.5rem; }
+  .hero-portrait-frame { width: 260px; height: 320px; }
   .hero-tag { display: none; }
+  .hero-name { font-size: 3rem; }
+  .section-heading { font-size: 1.75rem; }
 
   .section-inner { padding: 3rem 1.5rem; }
 
@@ -1103,50 +1102,80 @@
   .contact-layout { grid-template-columns: 1fr; gap: 2rem; }
 
   .about-stats { grid-template-columns: 1fr 1fr; }
-
   .pivot-cards { grid-template-columns: 1fr; }
-
   .events-card { margin-top: 0; }
-
-  .hero-name { font-size: 3rem; }
-
-  .section-heading { font-size: 1.75rem; }
-
   footer { flex-direction: column; gap: 0.75rem; text-align: center; padding: 1.5rem; }
-
   .form-row { grid-template-columns: 1fr; }
-
   .kr-gallery { grid-template-columns: 1fr; }
   .kr-thumbs { grid-template-columns: repeat(4, 1fr); }
-
   .contact-layout { grid-template-columns: 1fr; }
+
+  /* Fix all inline grids — convert to single column */
+  [style*="grid-template-columns: 1fr 1fr"],
+  [style*="grid-template-columns: 1fr 1.6fr"],
+  [style*="grid-template-columns: 1fr 1.3fr"],
+  [style*="grid-template-columns: 1fr 2fr"],
+  [style*="grid-template-columns: 1fr auto"],
+  [style*="grid-template-columns: 1.1fr 1fr"],
+  [style*="grid-template-columns: 1fr 1fr 1fr"],
+  [style*="grid-template-columns: repeat(3, 1fr)"] {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+
+  /* Fix three-cell methodology grid to stack */
+  [style*="grid-template-columns: 1fr 1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Section nav prev/next */
+  .section-nav { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+
+  /* Consulting CTA at bottom of contact */
+  [style*="grid-template-columns: 1fr auto"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Gallery */
+  .kr-gallery { grid-template-columns: 1fr !important; }
+  .kr-thumbs { grid-template-columns: repeat(4, 1fr) !important; }
+
+  /* Building section framed box — remove gap issue */
+  #building .section-inner [style*="gap: 4rem"] {
+    gap: 2rem !important;
+  }
+
+  /* Family photo — reduce width on mobile */
+  [style*="width: 70%"] { width: 100% !important; }
+
+  /* Photo heights on mobile */
+  [style*="height: 250px"] { height: 200px !important; }
+  [style*="height: 160px"] { height: 140px !important; }
 }
 
 @media (max-width: 480px) {
   .hero-name { font-size: 2.5rem; }
-
-  .hero-portrait-frame {
-    width: 200px;
-    height: 250px;
-  }
-
+  .hero-portrait-frame { width: 200px; height: 250px; }
   .about-stats { grid-template-columns: 1fr; }
-
   .pivot-card { padding: 1.5rem; }
-
   .section-inner { padding: 2.5rem 1rem; }
-
   .nav-cta { font-size: 0.7rem; padding: 0.4rem 0.9rem; }
-
   .hero-actions { flex-direction: column; align-items: center; }
-
   .btn-primary, .btn-ghost { width: 100%; text-align: center; }
-
-  .kr-thumbs { grid-template-columns: repeat(2, 1fr); }
-
+  .kr-thumbs { grid-template-columns: repeat(2, 1fr) !important; }
   .client-badges { gap: 0.4rem; }
-
   .client-badge { font-size: 0.72rem; }
+
+  /* Tighten section padding on small screens */
+  .section-inner { padding: 2rem 1rem !important; }
+
+  /* Reduce heading sizes further */
+  .section-heading { font-size: 1.5rem !important; }
+  h3[style*="font-size: 1.5rem"] { font-size: 1.2rem !important; }
+
+  /* Hide placeholder nav items on small screens */
+  .nav-links li:nth-child(4),
+  .nav-links li:nth-child(5) { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1161,13 +1190,32 @@
 <nav aria-label="Main navigation">
   <a href="#" class="nav-logo">Akeila Richter</a>
   <ul class="nav-links">
-  <li><a href="#building">Building</a></li>
-  <li><a href="#about">My Story</a></li>
-  <li><a href="#events">Gatherings</a></li>
-  <li><a href="#" style="opacity: 0.4; cursor: default; pointer-events: none;">Huddle</a></li>
-</ul>
-  <a href="#contact" class="nav-cta">Connect</a>
+    <li><a href="#building">Building</a></li>
+    <li><a href="#about">My Story</a></li>
+    <li><a href="#events">Gatherings</a></li>
+    <li><a href="#" style="opacity: 0.4; cursor: default; pointer-events: none;">Huddle</a></li>
+  </ul>
+  <div style="display: flex; align-items: center; gap: 1rem;">
+    <a href="#contact" class="nav-cta">Connect</a>
+    <button id="mobileMenuBtn" aria-label="Open menu" style="display: none; background: none; border: none; cursor: pointer; padding: 0.25rem; color: var(--champagne);">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect y="3" width="22" height="1.5" rx="1" fill="currentColor"/>
+        <rect y="10" width="22" height="1.5" rx="1" fill="currentColor"/>
+        <rect y="17" width="22" height="1.5" rx="1" fill="currentColor"/>
+      </svg>
+    </button>
+  </div>
 </nav>
+
+<!-- Mobile menu overlay -->
+<div id="mobileMenu" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(13,27,42,0.98); z-index: 200; flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem;">
+  <button id="mobileMenuClose" aria-label="Close menu" style="position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: none; cursor: pointer; color: var(--champagne); font-size: 1.5rem;">✕</button>
+  <a href="#building" class="mobile-nav-link" onclick="closeMobileMenu()">Building</a>
+  <a href="#about" class="mobile-nav-link" onclick="closeMobileMenu()">My Story</a>
+  <a href="#events" class="mobile-nav-link" onclick="closeMobileMenu()">Gatherings</a>
+  <a href="#contact" class="mobile-nav-link" onclick="closeMobileMenu()">Connect</a>
+  <a href="#" class="mobile-nav-link" style="opacity: 0.3; pointer-events: none;">Huddle</a>
+</div>
 
 <!-- HERO -->
 <section class="hero" aria-label="Introduction">
@@ -1605,6 +1653,24 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     }
   });
 });
+
+// Mobile menu
+function closeMobileMenu() {
+  document.getElementById('mobileMenu').style.display = 'none';
+  document.body.style.overflow = '';
+}
+const menuBtn = document.getElementById('mobileMenuBtn');
+const closeBtn = document.getElementById('mobileMenuClose');
+const mobileMenu = document.getElementById('mobileMenu');
+if (menuBtn) {
+  menuBtn.addEventListener('click', () => {
+    mobileMenu.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  });
+}
+if (closeBtn) {
+  closeBtn.addEventListener('click', closeMobileMenu);
+}
 
 // Nav scroll
 const nav = document.querySelector('nav');
