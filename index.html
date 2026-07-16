@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Akeila S. Richter</title>
+<title>Akeila Richter</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garant:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -27,6 +27,7 @@
   html { scroll-behavior: smooth; }
 
   body {
+    padding-top: 0;
     font-family: 'Inter', sans-serif;
     font-size: 16px;
     line-height: 1.7;
@@ -450,22 +451,19 @@
   }
 
   /* ── PIVOT ── */
-  .pivot { background: var(--navy); }
-
-  .pivot .section-label { color: var(--teal); }
-  .pivot .section-label::before { background: var(--teal); }
-  .pivot .section-heading { color: #fff; }
-  .pivot .section-heading em { color: var(--teal); }
-
+  .pivot { background: var(--cream); border-bottom: 2px solid var(--border); }
+  .pivot .section-label { color: var(--teal-muted); }
+  .pivot .section-label::before { background: var(--teal-muted); }
+  .pivot .section-heading { color: var(--navy); }
+  .pivot .section-heading em { color: var(--teal-muted); }
   .pivot-intro {
-    font-size: 1.1rem;
-    color: rgba(255,255,255,0.6);
+    font-size: 1rem;
+    color: var(--text-secondary);
     max-width: 640px;
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
     line-height: 1.85;
   }
-
-  .pivot-intro strong { color: rgba(255,255,255,0.9); font-weight: 500; }
+  .pivot-intro strong { color: var(--text-primary); font-weight: 500; }
 
   .pivot-cards {
     display: grid;
@@ -919,6 +917,114 @@
 
   .form-submit:hover { background: #00b09a; transform: translateY(-1px); }
 
+  /* ── GALLERY ── */
+  .kr-gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+  .kr-featured {
+    position: relative;
+    aspect-ratio: 4/3;
+    border-radius: 2px;
+    overflow: hidden;
+    background: var(--navy-mid);
+  }
+  .kr-featured img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    background: var(--navy-mid);
+    display: block;
+  }
+  .kr-thumbs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+  .kr-thumb {
+    aspect-ratio: 4/3;
+    border-radius: 2px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.2s, opacity 0.2s;
+    background: var(--navy-mid);
+  }
+  .kr-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    background: var(--navy-mid);
+    display: block;
+  }
+  .kr-thumb:hover { opacity: 0.85; }
+  .kr-thumb.active { border-color: var(--teal); }
+  .kr-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 0.75rem;
+  }
+  .kr-nav-arrows { display: flex; gap: 0.5rem; }
+  .kr-arrow {
+    width: 36px;
+    height: 36px;
+    border-radius: 2px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(13,27,42,0.6);
+    color: rgba(255,255,255,0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .kr-arrow:hover { border-color: var(--teal); color: var(--teal); }
+  .kr-counter {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 0.1em;
+  }
+
+  /* ── SECTION NAV ── */
+  .section-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 2.5rem;
+    margin-top: 2.5rem;
+    border-top: 1px solid var(--border);
+  }
+  .section-nav.dark {
+    border-top-color: rgba(255,255,255,0.08);
+  }
+  .section-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: opacity 0.2s;
+    opacity: 0.6;
+  }
+  .section-nav-link:hover { opacity: 1; }
+  .section-nav-link.light { color: var(--navy); }
+  .section-nav-link.dark-link { color: rgba(255,255,255,0.7); }
+  .section-nav-label {
+    font-size: 0.68rem;
+    color: var(--slate);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .section-nav-label.dark-label { color: rgba(255,255,255,0.3); }
+
   /* ── FOOTER ── */
   footer {
     background: var(--navy);
@@ -1011,7 +1117,6 @@
   .form-row { grid-template-columns: 1fr; }
 
   .kr-gallery { grid-template-columns: 1fr; }
-
   .kr-thumbs { grid-template-columns: repeat(4, 1fr); }
 
   .contact-layout { grid-template-columns: 1fr; }
@@ -1054,13 +1159,11 @@
 
 <!-- NAV -->
 <nav aria-label="Main navigation">
-  <a href="#" class="nav-logo">Akeila S. Richter</a>
+  <a href="#" class="nav-logo">Akeila Richter</a>
   <ul class="nav-links">
-    <li><a href="#building">What I'm Building</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#events">Events</a></li>
-    <li><a href="#community">Community</a></li>
-    <li><a href="#consulting">Background</a></li>
+    <li><a href="#building">Building</a></li>
+    <li><a href="#about">My Story</a></li>
+    <li><a href="#events">Gatherings</a></li>
   </ul>
   <a href="#contact" class="nav-cta">Connect</a>
 </nav>
@@ -1070,13 +1173,13 @@
   <div class="hero-line" aria-hidden="true"></div>
   <div class="hero-content">
     <p class="hero-eyebrow">Engineer · Health Tech Founder · Entrepreneur</p>
-    <h1 class="hero-name">Akeila<br><span>S. Richter</span></h1>
+    <h1 class="hero-name">Akeila Richter</h1>
     <p class="hero-title">Technology Founder &amp; CTO</p>
     <p class="hero-descriptor">
-      I am building at the intersection of health information and human decision-making. After 20 years advising national leaders, engineering complex systems, and building community, I am stepping fully into my most consequential chapter yet.
+      I build solutions to help women improve their health decisions. After 20 years advising leaders, engineering systems, and building communities, I now focus on helping women and their families understand their health information and make confident choices.
     </p>
     <div class="hero-actions">
-      <a href="#building" class="btn-primary">What I'm Building</a>
+      <a href="#building" class="btn-primary">Building</a>
       <a href="#about" class="btn-ghost">My Story</a>
     </div>
   </div>
@@ -1087,321 +1190,102 @@
         <img src="akeila-hero.jpg" alt="Akeila S. Richter" style="width: 100%; height: 100%; object-fit: cover; object-position: top;">
       </div>
   </div>
- <div class="hero-tag">Washington, DC</div>
-    </div>
  </div>
-  <div class="hero-scroll" aria-hidden="true">
-    <div class="scroll-line"></div>
-    Scroll
   </div>
 </section>
 
 <!-- WHAT I'M BUILDING / PIVOT -->
 <section class="pivot" id="building" aria-label="What I'm building">
-  <div class="section-inner">
-    <p class="section-label">Next chapter</p>
-    <h2 class="section-heading" style="color: #fff;">Building at the edge of<br><em>health & human decision-making</em></h2>
-<p style="font-family: 'Cormorant Garant', serif; font-size: 1.15rem; color: var(--teal); letter-spacing: 0.08em; margin-bottom: 1.5rem; font-style: italic;">Founder & CTO, Huddle</p>
-    <p class="pivot-intro">
-      The data exists. Lab results, clinical notes, wearable metrics, and more health info are captured more than ever. Yet many people, especially <strong>millennials navigating significant life choices</strong>, can't access or interpret this data to impact their lives. The gap is not about content. It is an understanding and <strong>interpretation problem</strong>, costing people their agency over their health. I am building the bridge.
-    </p>
-    <div class="pivot-cards">
-      <div class="pivot-card">
-        <span class="pivot-icon" aria-hidden="true">⬡</span>
-        <div class="pivot-card-title">The Problem I Live In</div>
-        <p class="pivot-card-text">There is a systemic gap in the flow of health information from clinical systems to the public, alongside rising rates of obesity and metabolic diseases. Many people do not know enough about key health factors like how their hormones influence their daily energy, mood, focus, and nutritional choices. We need to address this knowledge gap for better individual health and well-being.</p>
-      </div>
-      <div class="pivot-card">
-        <span class="pivot-icon" aria-hidden="true">◈</span>
-        <div class="pivot-card-title">The Gap I'm Closing</div>
-        <p class="pivot-card-text">Electronic health records and consumer wellness tools exist in separate worlds. One holds the data; the other holds the attention. Neither speaks the language of the person in the middle, trying to make better decisions with incomplete information. That person deserves both.</p>
-      </div>
-      <div class="pivot-card">
-        <span class="pivot-icon" aria-hidden="true">◎</span>
-        <div class="pivot-card-title">Why I'm the One to Build It</div>
-        <p class="pivot-card-text">Twenty years engineering complex systems, a foundation in Human Psychology, and a career spent making critical information accessible to decision-makers at the highest levels. Now applied to the most personal health decisions people face every day.</p>
-      </div>
-    </div>
-  </div>
-</section>
+  <div class="section-inner" style="padding-bottom: 3rem;">
+    <p class="section-label">Building</p>
+    <h2 class="section-heading">I'm building at the edge of<br><em>health & human decision-making</em><br>for millennial families</h2>
 
-<!-- ABOUT -->
-<section class="about" id="about" aria-label="About Akeila">
-  <div class="section-inner">
-    <div class="about-grid">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; margin-top: 2rem;">
+
+      <!-- Left: Huddle line, headshot, intro -->
       <div>
-        <p class="section-label">Background</p>
-        <h2 class="section-heading">Rooted in Chicago,<br>raised by <em>the world</em></h2>
-        <div class="about-stats">
-          <div class="stat-cell">
-            <div class="stat-number">B.S.</div>
-            <div class="stat-label">Industrial Engineering</div>
-          </div>
-          <div class="stat-cell">
-            <div class="stat-number">M.Eng.</div>
-            <div class="stat-label">Industrial & Information Systems Engineering</div>
-          </div>
-          <div class="stat-cell" style="grid-column: span 2;">
-            <div class="stat-number" style="font-size: 1.8rem;">Morgan State University</div>
-            <div class="stat-label">Baltimore, Maryland</div>
-          </div>
+        <div style="display: flex; align-items: center; gap: 1.25rem; margin-bottom: 2rem;">
+          <p style="font-family: 'Cormorant Garant', serif; font-size: 1.15rem; color: var(--teal-muted); letter-spacing: 0.08em; font-style: italic; margin: 0;">Founder & CTO, Huddle</p>
+          <img src="akeila-headshot.png" alt="Akeila Richter" style="width: 52px; height: 52px; border-radius: 50%; object-fit: cover; object-position: top; display: block; flex-shrink: 0;">
         </div>
 
-        <div class="about-interests">
-          <p class="interest-heading">Beyond the work</p>
-          <div class="interest-tags">
-            <span class="tag">Travel</span>
-            <span class="tag">Hiking</span>
-            <span class="tag">Theater & Arts</span>
-            <span class="tag">Coffee & Tea</span>
-            <span class="tag">Beach</span>
-            <span class="tag">Family</span>
-            <span class="tag">Collaboration</span>
+        <p class="pivot-intro" style="margin-bottom: 0;">
+          More health information is being captured than ever. Yet people, especially <strong>millennial women</strong>, can't determine their own health in ways that change how they live. This gap is an <strong>interpretation problem</strong> caused by poor access and design, and it's costing people their agency. The data exists, and there is plenty of content. <br>
+<br>
+I'm building the bridge to make our data and health work for us.
+        </p>
+      </div>
+
+      <!-- Right: numbered timeline in thin framed box, aligned to paragraph -->
+      <div style="border: 1px solid var(--border); border-radius: 2px; padding: 2rem; margin-top: 0; align-self: flex-end;">
+        <div style="display: flex; flex-direction: column; gap: 0;">
+
+          <div style="display: flex; gap: 1.25rem; align-items: flex-start; padding-bottom: 1.75rem;">
+            <div style="display: flex; flex-direction: column; align-items: center; flex-shrink: 0;">
+              <div style="width: 36px; height: 36px; border-radius: 50%; background: var(--teal-muted); display: flex; align-items: center; justify-content: center; font-size: 0.72rem; font-weight: 600; color: #fff; flex-shrink: 0;">01</div>
+              <div style="width: 1px; flex: 1; min-height: 40px; background: rgba(0,168,150,0.2); margin-top: 0.5rem;"></div>
+            </div>
+            <div style="padding-top: 0.4rem;">
+              <div style="font-size: 0.9rem; font-weight: 500; color: var(--navy); margin-bottom: 0.4rem;">The Problem We Live In</div>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.75;">Critical health information is locked inside clinical systems and isn't reaching us in ways we can use it.</p>
+            </div>
           </div>
+
+          <div style="display: flex; gap: 1.25rem; align-items: flex-start; padding-bottom: 1.75rem;">
+            <div style="display: flex; flex-direction: column; align-items: center; flex-shrink: 0;">
+              <div style="width: 36px; height: 36px; border-radius: 50%; background: var(--teal-muted); display: flex; align-items: center; justify-content: center; font-size: 0.72rem; font-weight: 600; color: #fff; flex-shrink: 0;">02</div>
+              <div style="width: 1px; flex: 1; min-height: 40px; background: rgba(0,168,150,0.2); margin-top: 0.5rem;"></div>
+            </div>
+            <div style="padding-top: 0.4rem;">
+              <div style="font-size: 0.9rem; font-weight: 500; color: var(--navy); margin-bottom: 0.4rem;">The Gap I'm Closing</div>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.75;">Electronic health records and wellness tools exist in separate worlds. Neither solution speaks the language of the woman in the middle. She deserves both.</p>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 1.25rem; align-items: flex-start;">
+            <div style="display: flex; flex-direction: column; align-items: center; flex-shrink: 0;">
+              <div style="width: 36px; height: 36px; border-radius: 50%; background: var(--teal-muted); display: flex; align-items: center; justify-content: center; font-size: 0.72rem; font-weight: 600; color: #fff; flex-shrink: 0;">03</div>
+            </div>
+            <div style="padding-top: 0.4rem;">
+              <div style="font-size: 0.9rem; font-weight: 500; color: var(--navy); margin-bottom: 0.4rem;">How I'm Building It</div>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.75;">Focus groups, storybuilding through conversation, design sprints, and usability testing alongside millennial women, building from shared understanding up.</p>
+            </div>
+          </div>
+
         </div>
       </div>
 
-      <div class="about-bio">
-        <p>
-          Born in Chicago and raised across the globe thanks to parents in military service, Akeila S. Richter is fluent in navigating complex systems, whether geopolitical, organizational, or technological.
-        </p>
-        <p>
-          She holds a Bachelor of Science in Industrial Engineering and a Master of Engineering in Industrial & Information Systems Engineering from <strong>Morgan State University</strong>, complemented by deep studies in Human Psychology. The rare pairing of rigorous systems thinking with genuine human insight defines everything Akeila builds and leads.
-        </p>
-        <p>
-          Across every role she has held as an engineer, technical writer, organizer, and events entrepreneur, the through line has been the same. She sees the gap that others overlook and steps in to help build what should be there. That is a founder's instinct, and it has been present across every chapter of her career.
-        </p>
-        <p>
-          Today, Akeila is building her next chapter from Washington, DC, where she lives with her husband and daughter.
-        </p>
-      </div>
+    </div>
+    <div class="section-nav" style="border-top: none; padding-top: 1.5rem;">
+      <span></span>
+      <a href="#about" class="section-nav-link light">My Story &nbsp;→</a>
     </div>
   </div>
 </section>
 
-<!-- EVENTS -->
-<section class="events" id="events" aria-label="KR Events">
-  <div class="section-inner">
-    <div class="events-layout">
-      <div class="events-body">
-        <p class="section-label">KR Events</p>
-        <h2 class="section-heading">Celebrating excellence<br>and building <em>community</em></h2>
+<!-- MY STORY -->
+<section class="about" id="about" aria-label="My Story">
+  <div class="section-inner" style="padding-top: 3rem;">
+    <p class="section-label">My Story</p>
+    <h2 class="section-heading">Rooted in Chicago.<br>Raised by <em>the world.</em></h2>
 
-        <div class="events-founding">
-          <div class="founding-year">2008</div>
-          <div class="founding-divider"></div>
-          <div class="founding-text">Founded by Akeila</div>
-        </div>
+    <!-- Row 1: Bio and Affiliations two columns -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 2.5rem; align-items: start;">
 
-        <p>KR Events is a private community built around excellence, women, and communities that deserve better, as intentional about who it gathers as it is about everything it creates.</p>
-        <p>Every experience is designed around the ritual of gathering. Each detail, from the venue to the menu to the guest list, is curated toward a single purpose. Every person in the room leaves with something they did not have when they arrived. A spark, a laugh, a conversation that changes something, or simply the feeling of having been exactly where they were supposed to be.</p>
-        <p>Exceptional food, the right setting, and intentional company create the conditions for conversation and connection that would not happen anywhere else, uniting tastemakers, industry leaders, and community builders in moments that invite candor and innovative ideas and leave guests with a rare feeling of genuine recognition.</p>
-        <div style="margin-top: 2.5rem;">
-          <a href="#contact" class="btn-primary" style="display: inline-block; background: var(--teal); color: var(--navy);">Inquire About Events</a>
+      <!-- Left: bio -->
+      <div>
+        <p style="font-size: 0.68rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--slate); margin-bottom: 0.75rem;">Bio</p>
+        <p style="color: var(--text-secondary); line-height: 1.85; margin-bottom: 1.25rem;">I'm a professional engineer, researcher, technical writer, and entrepreneur from the Midwest, raised as a military brat. Today, I live in Washington, DC, with my husband and daughter, where I serve as Founder and CTO of Huddle's health technology R&D studio.</p>
+
+        <div style="width: 70%; border-radius: 2px; overflow: hidden; margin-bottom: 1.25rem;">
+          <img src="family.jpeg" alt="Akeila Richter family" style="width: 100%; height: auto; display: block; mix-blend-mode: multiply;">
         </div>
       </div>
-	
-      <div class="events-visual">
-	<div style="margin-bottom: 1rem; width: 100%; aspect-ratio: 4/3; border-radius: 2px; overflow: hidden;">
-  	<img src="akeila-about.jpg" alt="Akeila S. Richter" style="width: 100%; height: 100%; object-fit: cover;">
-	</div>
-        <div class="events-card">
-          <p class="events-card-label">The KR Events Philosophy</p>
-          <p class="events-card-quote">"Hard work and good times belong together."</p>
-          <p style="font-size: 0.8rem; color: rgba(255,255,255,0.4); margin-bottom: 1.5rem; line-height: 1.7;">Invite-only events crafted for those who move through the world with intention, bringing together brilliant minds in settings as remarkable as the people in them.</p>
-          <p class="events-card-label" style="margin-bottom: 0.75rem;">Destinations include</p>
-          <div class="events-locations">
-            <span class="location-tag">Washington, DC</span>
-            <span class="location-tag">Los Angeles</span>
-            <span class="location-tag">New York</span>
-            <span class="location-tag">Miami</span>
-            <span class="location-tag">International</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- EVENTS SLIDESHOW -->
-<section id="gallery" aria-label="KR Events Gallery" style="background: var(--navy); padding: 3rem 0;">
-  <style>
-    .kr-gallery {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 2.5rem;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.75rem;
-    }
-    .kr-featured {
-      position: relative;
-      aspect-ratio: 4/3;
-      border-radius: 2px;
-      overflow: hidden;
-      background: var(--navy-mid);
-    }
-    .kr-featured img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      object-position: center;
-      background: var(--navy-mid);
-      display: block;
-    }
-    .kr-thumbs {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.75rem;
-    }
-    .kr-thumb {
-      aspect-ratio: 4/3;
-      border-radius: 2px;
-      overflow: hidden;
-      cursor: pointer;
-      border: 2px solid transparent;
-      transition: border-color 0.2s, opacity 0.2s;
-      background: var(--navy-mid);
-    }
-    .kr-thumb img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      object-position: center;
-      background: var(--navy-mid);
-      display: block;
-    }
-    .kr-thumb:hover { opacity: 0.85; }
-    .kr-thumb.active { border-color: var(--teal); }
-    .kr-nav {
-      max-width: 1100px;
-      margin: 1rem auto 0;
-      padding: 0 2.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .kr-nav-arrows {
-      display: flex;
-      gap: 0.5rem;
-    }
-    .kr-arrow {
-      width: 36px;
-      height: 36px;
-      border-radius: 2px;
-      border: 1px solid rgba(255,255,255,0.2);
-      background: rgba(13,27,42,0.6);
-      color: rgba(255,255,255,0.7);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      font-size: 0.85rem;
-      transition: border-color 0.2s, color 0.2s;
-    }
-    .kr-arrow:hover { border-color: var(--teal); color: var(--teal); }
-    .kr-counter {
-      font-size: 0.75rem;
-      color: rgba(255,255,255,0.35);
-      letter-spacing: 0.1em;
-    }
-    @media (max-width: 900px) {
-      .kr-gallery { grid-template-columns: 1fr; }
-      .kr-thumbs { grid-template-columns: repeat(4, 1fr); }
-    }
-  </style>
-
-  <div style="max-width: 1100px; margin: 0 auto; padding: 2rem 2.5rem 0;">
-    <p class="section-label" style="color: var(--teal);">KR Events</p>
-    <h2 class="section-heading" style="color: #fff; margin-bottom: 1.5rem;">Moments from<br><em>the experience</em></h2>
-  </div>
-
-  <div class="kr-gallery" id="krGallery">
-    <div class="kr-featured">
-      <img id="krFeatured" src="kr-event-01.jpg" alt="KR Events" style="transform: scaleX(-1);">
-    </div>
-    <div class="kr-thumbs" id="krThumbs">
-      <div class="kr-thumb active" data-index="0"><img src="kr-event-01.jpg" alt="KR Events 1" style="transform: scaleX(-1);"></div>
-      <div class="kr-thumb" data-index="1"><img src="kr-event-02.jpg" alt="KR Events 2"></div>
-      <div class="kr-thumb" data-index="2"><img src="kr-event-03.jpg" alt="KR Events 3"></div>
-      <div class="kr-thumb" data-index="3"><img src="kr-event-04.jpg" alt="KR Events 4"></div>
-    </div>
-  </div>
-
-  <div class="kr-nav">
-    <div class="kr-nav-arrows">
-      <button class="kr-arrow" id="krPrev">&#8592;</button>
-      <button class="kr-arrow" id="krNext">&#8594;</button>
-    </div>
-    <div class="kr-counter" id="krCounter">1 / 17</div>
-  </div>
-
-  <script>
-    (function() {
-      const photos = [
-        'kr-event-01.jpg','kr-event-02.jpg','kr-event-03.jpg','kr-event-04.jpg',
-        'kr-event-05.jpg','kr-event-06.jpg','kr-event-07.jpg','kr-event-08.jpg',
-        'kr-event-09.jpg','kr-event-10.jpg','kr-event-11.jpg','kr-event-12.jpg',
-        'kr-event-13.jpg','kr-event-14.jpg','kr-event-15.jpg','kr-event-16.jpg',
-        'kr-event-17.jpg'
-      ];
-
-      const featured = document.getElementById('krFeatured');
-      const thumbsContainer = document.getElementById('krThumbs');
-      const counter = document.getElementById('krCounter');
-      let current = 0;
-      let thumbStart = 0;
-
-      function updateFeatured(index) {
-        current = (index + photos.length) % photos.length;
-        featured.src = photos[current];
-        featured.alt = 'KR Events ' + (current + 1);
-	featured.style.transform = current === 0 ? 'scaleX(-1)' : '';
-        counter.textContent = (current + 1) + ' / ' + photos.length;
-        renderThumbs();
-      }
-
-      function renderThumbs() {
-        // Keep thumbStart window in sync with current
-        if (current < thumbStart) thumbStart = current;
-        if (current >= thumbStart + 4) thumbStart = current - 3;
-        thumbStart = Math.max(0, Math.min(thumbStart, photos.length - 4));
-
-        thumbsContainer.innerHTML = '';
-        for (let i = thumbStart; i < thumbStart + 4 && i < photos.length; i++) {
-          const div = document.createElement('div');
-          div.className = 'kr-thumb' + (i === current ? ' active' : '');
-          div.dataset.index = i;
-          const img = document.createElement('img');
-          img.src = photos[i];
-          img.alt = 'KR Events ' + (i + 1);
-          div.appendChild(img);
-          div.addEventListener('click', () => updateFeatured(i));
-          thumbsContainer.appendChild(div);
-        }
-      }
-
-      document.getElementById('krNext').addEventListener('click', () => updateFeatured(current + 1));
-      document.getElementById('krPrev').addEventListener('click', () => updateFeatured(current - 1));
-
-      renderThumbs();
-    })();
-  </script>
-</section>
-
-<!-- COMMUNITY -->
-<section class="community" id="community" aria-label="Community work">
-  <div class="section-inner">
-    <div class="community-grid" style="align-items: start;">
-      <div class="community-body">
-        <p class="section-label">Community</p>
-        <h2 class="section-heading">Advocacy rooted<br>in <em>understanding</em></h2>
-
-        <div style="width: 100%; aspect-ratio: 4/3; border-radius: 2px; overflow: hidden; margin-bottom: 2rem;">
-          <img src="akeila-community.jpg" alt="Akeila S. Richter community work" style="width: 100%; height: 100%; object-fit: cover;">
-        </div>
-
-        <div class="affiliations" role="list" style="margin-top: 0;">
+      <!-- Right: affiliations + beyond the work + get in touch -->
+      <div>
+        <p style="font-size: 0.68rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--slate); margin-bottom: 0.75rem;">Affiliations</p>
+        <div class="affiliations" role="list" style="margin-bottom: 2rem;">
           <div class="affiliation-item" role="listitem">
             <div>
               <div class="aff-org">Dress for Success Baltimore</div>
@@ -1421,7 +1305,7 @@
               <div class="aff-org">Pan African American Film Festival</div>
               <div class="aff-role">Volunteer</div>
             </div>
-            <div class="aff-years">2015-2016</div>
+            <div class="aff-years">2015–2016</div>
           </div>
           <div class="affiliation-item" role="listitem">
             <div>
@@ -1431,138 +1315,177 @@
             <div class="aff-years">2023–Present</div>
           </div>
         </div>
-      </div>
 
-      <div id="communityRight" style="display: flex; flex-direction: column; justify-content: space-between;">
-        <div>
-          <p style="color: var(--text-secondary); margin-bottom: 1.25rem; line-height: 1.85;">Akeila believes everyone wants something out of life, and that the structures within our society play a critical role in either facilitating or hindering those goals. Her background in human behavior and goal-oriented reasoning has shaped her commitment to ensuring these structures are more equitable and accessible for the many people who never have a say in how they are built.</p>
-          <p style="color: var(--text-secondary); margin-bottom: 1.25rem; line-height: 1.85;">For Akeila, community engagement is a natural extension of her work in engineering and entrepreneurship. The same instinct that drives her professionally, noticing gaps and stepping in to address them, shows up here too.</p>
-          <p style="color: var(--text-secondary); margin-bottom: 0; line-height: 1.85;">She welcomes opportunities to serve, advise, and collaborate on civil projects that prioritize community impact. If you are working on an initiative in this spirit, she would love to connect.</p>
+        <p style="font-size: 0.68rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--slate); margin-bottom: 0.75rem;">Beyond the work</p>
+        <div class="interest-tags" style="margin-bottom: 2rem;">
+          <span class="tag">Travel</span>
+          <span class="tag">Hiking</span>
+          <span class="tag">Theater & Arts</span>
+          <span class="tag">Coffee & Tea</span>
+          <span class="tag">Beach</span>
+          <span class="tag">Family</span>
+          <span class="tag">Collaboration</span>
         </div>
 
-        <div style="background: var(--navy); padding: 2rem; border-radius: 2px; margin-top: 2rem;">
-          <p style="font-size: 0.72rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--teal); margin-bottom: 0.75rem;">Open to collaboration</p>
-          <p style="font-size: 0.88rem; color: rgba(255,255,255,0.55); line-height: 1.75; margin-bottom: 1.5rem;">Board service, advisory roles, speaking engagements, and civil projects in alignment with Akeila's values of equity, access, and human potential.</p>
-          <a href="#contact" class="btn-ghost" style="display: inline-block; font-size: 0.78rem;">Get in touch</a>
-        </div>
+        <a href="#contact" class="btn-primary" style="display: inline-block; background: var(--teal); color: var(--navy);">Get in Touch</a>
       </div>
+    </div>
+
+    <!-- Row 2: Professional Background full-width two-column grid -->
+    <div style="margin-top: 3rem; padding-top: 2.5rem; border-top: 1px solid var(--border);">
+      <p style="font-size: 0.68rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--slate); margin-bottom: 0.5rem;">Professional Background</p>
+      <h3 style="font-family: 'Cormorant Garant', serif; font-size: 1.5rem; font-weight: 300; color: var(--navy); line-height: 1.2; margin-bottom: 1.5rem;">Trusted at the highest levels of<br>national <em style="color: var(--teal-muted); font-style: italic;">leadership</em></h3>
+
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start;">
+
+  <!-- Column 1: paragraph, orgs, citation, tagline -->
+  <div>
+    <p style="color: var(--text-secondary); line-height: 1.85; margin-bottom: 1.5rem;">For over 20 years, my analytical and technical work has helped national and industry leaders navigate critical defense, business, and performance decisions. As a published author and engineer, I have advised on national infrastructure, led technology transformation initiatives, and built a track record of solving nuanced problems with accuracy.</p>
+  <br>
+    <p class="clients-heading" style="margin-bottom: 0.85rem;">Organizations served</p>
+    <p style="font-size: 0.85rem; font-weight: 500; color: var(--text-primary); line-height: 2; margin-bottom: 1.5rem;">
+      United States Government
+      <span style="color: var(--teal); margin: 0 0.3rem;">·</span>
+      United States Military
+      <span style="color: var(--teal); margin: 0 0.3rem;">·</span>
+      Department of Homeland Security
+      <span style="color: var(--teal); margin: 0 0.3rem;">·</span>
+      Department of Justice
+      <span style="color: var(--teal); margin: 0 0.3rem;">·</span>
+      FBI
+      <span style="color: var(--teal); margin: 0 0.3rem;">·</span>
+      NASA
+      <span style="color: var(--teal); margin: 0 0.3rem;">·</span>
+      Boeing
+    </p>
+ <div id="citationBlock" style="padding: 0.75rem 1rem; background: var(--champagne-light); border-left: 3px solid var(--teal); border-radius: 0 2px 2px 0; margin-bottom: 1.5rem;">
+      <p style="font-size: 0.65rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--teal); margin-bottom: 0.25rem;">Authored Research</p>
+      <p style="font-size: 0.78rem; font-weight: 500; color: var(--text-primary); margin-bottom: 0.25rem; line-height: 1.4;">Social Computing, Behavioral Modeling, and Prediction</p>
+      <p style="font-size: 0.72rem; color: var(--slate); margin-bottom: 0.4rem;">Springer Nature · 2008</p>
+      <a href="https://link.springer.com/chapter/10.1007/978-0-387-77672-9_5" target="_blank" style="font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--teal); text-decoration: none; border-bottom: 1px solid rgba(0,201,177,0.3); padding-bottom: 0.1rem;">View Publication &#8599;</a>
+    </div>
+    <br>
+<a href="bio.html" style="display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); text-decoration: none; border-bottom: 1px solid rgba(0,201,177,0.3); padding-bottom: 0.2rem;">Read Full Bio &#8599;</a>
+
+  </div>
+
+  <!-- Column 2: both photos stacked -->
+  <div style="display: flex; flex-direction: column; gap: 1rem;">
+    <div>
+      <div style="width: 100%; background: var(--navy); border-radius: 2px; overflow: hidden; padding: 0.75rem;">
+        <img src="Akeila-photo1.jpg" alt="Akeila S. Richter presenting on Multi-Agent Systems"
+          style="width: 100%; height: auto; display: block; border-radius: 2px;">
+      </div>
+      <p style="font-size: 0.65rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); margin-top: 0.5rem;">Presenting on Multi-Agent Systems</p>
+    </div>
+    <div>
+      <div style="width: 100%; background: var(--navy); border-radius: 2px; overflow: hidden; padding: 0.75rem;">
+        <img id="photo2img" src="Akeila-photo2.jpg" alt="Akeila S. Richter"
+          style="width: 100%; height: 300px; display: block; object-fit: cover; object-position: center 15%;">
+      </div>
+      <p style="font-size: 0.65rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); margin-top: 0.5rem;">Engineer. Author. Advisor.</p>
     </div>
   </div>
 
-  <script>
-    (function() {
-      function alignCommunityRight() {
-        const left = document.querySelector('.community-body');
-        const right = document.getElementById('communityRight');
-        const label = left.querySelector('.section-label');
-        const heading = left.querySelector('.section-heading');
-        if (!label || !heading || !right) return;
-        const labelH = label.offsetHeight + parseInt(getComputedStyle(label).marginBottom);
-        const headingH = heading.offsetHeight + parseInt(getComputedStyle(heading).marginBottom);
-        right.style.paddingTop = (labelH + headingH) + 'px';
-      }
-      alignCommunityRight();
-      window.addEventListener('resize', alignCommunityRight);
-    })();
-  </script>
+</div>
+
+    <div class="section-nav">
+      <a href="#building" class="section-nav-link light">← &nbsp;Building</a>
+      <a href="#events" class="section-nav-link light">Gatherings &nbsp;→</a>
+    </div>
+  </div>
 </section>
 
-<!-- CONSULTING (CREDENTIAL) -->
-<section class="consulting" id="consulting" aria-label="Professional background">
+<!-- EVENTS -->
+<section class="events" id="events" aria-label="Building Methodology" style="background: var(--navy);">
   <div class="section-inner">
-    <p class="section-label">Professional background</p>
-    <h2 class="section-heading">Trusted at the highest levels of<br>national <em>leadership</em></h2>
 
-    <div style="display: grid; grid-template-columns: 1fr 1.6fr; gap: 3rem; align-items: stretch; margin-top: 2.5rem;">
-
-      <!-- Left: both photos stacked -->
-      <div style="display: flex; flex-direction: column; gap: 1rem;">
-        <div>
-          <div style="width: 100%; background: var(--navy); border-radius: 2px; overflow: hidden; padding: 1rem;">
-            <img src="Akeila-photo1.jpg" alt="Akeila S. Richter presenting on Multi-Agent Systems"
-              style="width: 100%; height: auto; display: block; border-radius: 2px;">
-          </div>
-          <p style="font-size: 0.68rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); margin-top: 0.75rem;">Presenting on Multi-Agent Systems</p>
-        </div>
-
-        <div style="margin-top: auto; display: flex; flex-direction: column;">
-          <div style="width: 100%; background: var(--navy); border-radius: 2px; overflow: hidden; padding: 1rem;">
-            <img src="Akeila-photo2.jpg" alt="Akeila S. Richter"
-              style="width: 100%; height: 250px; display: block; object-fit: cover; object-position: center 20%;">
-          </div>
-          <p style="font-size: 0.68rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); margin-top: 0.75rem;">Engineer. Author. Advisor.</p>
-        </div>
+    <!-- Heading and KR Events photo side by side -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; margin-bottom: 3rem;">
+      <div>
+        <p class="section-label" style="color: var(--teal);">Gatherings</p>
+        <h2 class="section-heading" style="color: #fff;">Discovery in community,<br>building toward <em>Huddle</em></h2>
+        <p style="color: rgba(255,255,255,0.6); line-height: 1.85; margin-bottom: 1.25rem;"><em>Huddle</em> is an aligned collective of engineers, designers, and consultants who transform women's health knowledge into high-quality health-tech products. <br>We begin with the ritual of <em>gathering</em> and listening to the right people in the right setting to foster honest conversations.</p>
       </div>
-
-      <!-- Right: copy, organizations, citation -->
-      <div style="display: flex; flex-direction: column;">
-        <p style="color: var(--text-secondary); line-height: 1.85; margin-bottom: 1.25rem;">For over 20 years, Akeila's analytical and technical work has helped national leaders navigate significant and critical decisions. As a published author and engineer, she has advised on defense infrastructure, led technology transformation initiatives, and built a track record of solving complex problems where the stakes did not allow for anything less than accuracy.</p>
-        <p style="color: var(--text-secondary); line-height: 1.85; margin-bottom: 2rem;">That same standard of precision and accountability now drives her work as a health technology founder.</p>
-
-        <p class="clients-heading" style="margin-bottom: 0.85rem;">Organizations served</p>
-        <p style="font-size: 0.88rem; font-weight: 500; color: var(--text-primary); line-height: 2; margin-bottom: 0.75rem;">
-          United States Government
-          <span style="color: var(--teal); margin: 0 0.4rem;">·</span>
-          United States Military
-          <span style="color: var(--teal); margin: 0 0.4rem;">·</span>
-          Department of Homeland Security
-          <span style="color: var(--teal); margin: 0 0.4rem;">·</span>
-          Department of Justice
-          <span style="color: var(--teal); margin: 0 0.4rem;">·</span>
-          FBI
-          <span style="color: var(--teal); margin: 0 0.4rem;">·</span>
-          NASA
-          <span style="color: var(--teal); margin: 0 0.4rem;">·</span>
-          Boeing
-        </p>
-
-        <!-- Condensed citation block -->
-        <div style="padding: 0.75rem 1rem; background: var(--cream); border-left: 3px solid var(--teal); border-radius: 0 2px 2px 0; margin-top: 2rem;">
-          <p style="font-size: 0.65rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--teal); margin-bottom: 0.25rem;">Authored Research</p>
-          <p style="font-size: 0.78rem; font-weight: 500; color: var(--text-primary); margin-bottom: 0.25rem; line-height: 1.4;">Social Computing, Behavioral Modeling, and Prediction</p>
-          <p style="font-size: 0.72rem; color: var(--slate); margin-bottom: 0.4rem;">Springer Nature · 2008</p>
-          <a href="https://link.springer.com/chapter/10.1007/978-0-387-77672-9_5" target="_blank" style="font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--teal); text-decoration: none; border-bottom: 1px solid rgba(0,201,177,0.3); padding-bottom: 0.1rem;">View Publication &#8599;</a>
+      <div style="padding-top: 0.5rem;">
+        <div style="width: 100%; aspect-ratio: 4/3; border-radius: 2px; overflow: hidden;">
+          <img src="akeila-about.jpg" alt="KR Events gathering" style="width: 100%; height: 100%; object-fit: cover; display: block;">
         </div>
-
       </div>
     </div>
+
+    <!-- Body copy with community photo as editorial pause -->
+    <div>
+  <p class="clients-heading" style="margin-bottom: 0.85rem;">Building Methodology</p>    
+  <p style="color: rgba(255,255,255,0.6); line-height: 1.85; margin-bottom: 2rem;">Each gathering is an episode of discovery. Focused conversation, a collaborative session, a shared meal, and the kind of candor and ideas that surface only in the rooms we're building.<br>
+<br>Through deliberate methodology, conversations are documented by visual and written note-taking. Patterns emerge. A shared understanding forms, and that understanding becomes the foundation of every design decision.<br> <br>Together, we define what matters.</p>
+    </div>
+<!-- Gallery relabelled as Gatherings -->
+    <div>
+      <div class="kr-gallery" id="krGallery">
+        <div class="kr-featured">
+          <img id="krFeatured" src="kr-event-02.jpg" alt="KR Events gathering" style="transform: scaleX(-1);">
+        </div>
+        <div class="kr-thumbs" id="krThumbs">
+          <div class="kr-thumb active" data-index="0"><img src="kr-event-02.jpg" alt="Gathering 1" style="transform: scaleX(-1);"></div>
+          <div class="kr-thumb" data-index="1"><img src="kr-event-01.png" alt="Gathering 2"></div>
+          <div class="kr-thumb" data-index="2"><img src="kr-event-03.jpg" alt="Gathering 3"></div>
+        </div>
+      </div>
+      <div class="kr-nav">
+        <div class="kr-nav-arrows">
+          <button class="kr-arrow" id="krPrev">&#8592;</button>
+          <button class="kr-arrow" id="krNext">&#8594;</button>
+        </div>
+        <div class="kr-counter" id="krCounter">1 / 3</div>
+      </div>
+    <!-- Community photo centered as editorial pause -->
+<br>
+  <p style="color: rgba(255,255,255,0.6); line-height: 1.85; margin-bottom: 1.25rem;">I call on my experience designing events that bring people together with intention, applying it directly to the work of building toward <em>Huddle</em>.</p><br>
+    <div style="width: 100%; aspect-ratio: 16/9; border-radius: 2px; overflow: hidden; margin: 0 0 2rem 0;">
+      <img src="akeila-community.jpg" alt="Community gathering" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+    </div>
+
+    <div>
+      <p style="color: rgba(255,255,255,0.6); line-height: 1.85; margin-bottom: 2.5rem;">This approach is grounded in structured collaboration and advocacy in practice, listening, defining with clarity, and building the outcome that intentionally reflects the lives and needs of the people it is designed to serve. <br>
+<br>Currently, I am excited to focus on a Calm Technology project to create a beautiful, integrated software-and-hardware design for everyday wear and for improved insight into our hormones.</p>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.06); margin-bottom: 3rem;">
+        <div style="background: var(--navy); padding: 1.5rem;">
+          <p style="font-size: 0.65rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal); margin-bottom: 0.5rem;">Gather</p>
+          <p style="font-size: 0.85rem; color: rgba(255,255,255,0.7); font-weight: 500; margin-bottom: 0.4rem;">Focused conversations</p>
+          <p style="font-size: 0.8rem; color: rgba(255,255,255,0.4); line-height: 1.65;">Bringing millennial women together to surface the real experience of navigating health information.</p>
+        </div>
+        <div style="background: var(--navy); padding: 1.5rem;">
+          <p style="font-size: 0.65rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal); margin-bottom: 0.5rem;">Discover</p>
+          <p style="font-size: 0.85rem; color: rgba(255,255,255,0.7); font-weight: 500; margin-bottom: 0.4rem;">Shared understanding</p>
+          <p style="font-size: 0.8rem; color: rgba(255,255,255,0.4); line-height: 1.65;">Visual and written note-taking transforms conversation into patterns, and patterns into insight.</p>
+        </div>
+        <div style="background: var(--navy); padding: 1.5rem;">
+          <p style="font-size: 0.65rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal); margin-bottom: 0.5rem;">Build</p>
+          <p style="font-size: 0.85rem; color: rgba(255,255,255,0.7); font-weight: 500; margin-bottom: 0.4rem;">Design from insight</p>
+          <p style="font-size: 0.8rem; color: rgba(255,255,255,0.4); line-height: 1.65;">Design sprints and usability testing grounded in what is actually heard, not assumed.</p>
+        </div>
+      </div>
+    </div>
+
+    
+    </div>
+
+    <div class="section-nav dark">
+      <a href="#about" class="section-nav-link dark-link">← &nbsp;My Story</a>
+      <a href="#contact" class="section-nav-link dark-link">Connect &nbsp;→</a>
+    </div>
+
   </div>
 </section>
-
-<!-- CONTACT -->
 <section class="contact" id="contact" aria-label="Contact">
-  <div class="section-inner">
+  <div class="section-inner" style="padding-top: 4rem; padding-bottom: 5rem;">
     <div class="contact-layout">
       <div>
         <p class="section-label">Contact</p>
-        <h2 class="section-heading">Let's build together</h2>
-        <p class="contact-intro">I am always open to connecting with investors, collaborators, and partners who share a conviction that people deserve better access to their own health information. Reach out and let's explore what's possible.</p>
-
-        <div class="contact-items">
-          <div class="contact-item">
-            <div class="contact-icon" aria-hidden="true">⬡</div>
-            <div>
-              <div class="contact-item-label">Based in</div>
-              <div class="contact-item-value">Washington, DC</div>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon" aria-hidden="true">◈</div>
-            <div>
-              <div class="contact-item-label">Open to</div>
-              <div class="contact-item-value">Investment · Partnerships · Advisory · Events</div>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon" aria-hidden="true">◎</div>
-            <div>
-              <div class="contact-item-label">Connect</div>
-              <div class="contact-item-value">
-  <a href="https://www.linkedin.com/in/akeilarichter" target="_blank" style="color: inherit; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.3);">LinkedIn</a> · By introduction
-</div>
-            </div>
-          </div>
-        </div>
+        <h2 class="section-heading">Get in touch</h2>
+        <p class="contact-intro">Reach out and let's explore the shared conviction that people deserve better access to their own health information.</p>
       </div>
 
       <div>
@@ -1579,21 +1502,85 @@
           </div>
           <div class="form-field">
             <label class="form-label" for="f-message">Message</label>
-            <textarea class="form-textarea" id="f-message" placeholder="Tell me what you're working on..."></textarea>
+            <textarea class="form-textarea" id="f-message" style="min-height: 90px;" placeholder="Tell me what you're working on..."></textarea>
           </div>
           <button type="submit" class="form-submit" id="submit-btn">Send Message</button>
         </form>
       </div>
     </div>
+
+    <!-- Consulting secondary CTA -->
+    <div style="margin-top: 3rem; padding: 2rem 0 1rem; border-top: 1px solid rgba(255,255,255,0.08);">
+      <div style="display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: center;">
+        <div>
+          <p style="font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal); margin-bottom: 0.4rem;">Available for consulting</p>
+          <p style="font-size: 0.88rem; color: rgba(255,255,255,0.6); line-height: 1.7;">Available for select engagements in systems engineering, technology transformation, program oversight, and product strategy. Contact me to schedule a call.</p>
+        </div>
+        <a href="https://www.linkedin.com/in/akeilarichter" target="_blank" style="white-space: nowrap; display: inline-block; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--navy); background: var(--teal); padding: 0.75rem 1.5rem; border-radius: 2px; text-decoration: none; transition: background 0.2s;">Connect on LinkedIn</a>
+      </div>
+    </div>
+
+    <div class="section-nav dark" style="margin-top: 2rem;">
+      <a href="#events" class="section-nav-link dark-link">← &nbsp;Gatherings</a>
+      <a href="#" class="section-nav-link dark-link" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Back to top &nbsp;↑</a>
+    </div>
+
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-right">© 2025 Akeila S. Richter · All rights reserved</div>
+  <div class="footer-logo">Akeila Richter</div>
+  <div class="footer-right">© 2025 Akeila Richter · All rights reserved</div>
 </footer>
 
 <script>
+// Gallery
+(function() {
+  const photos = [
+    'kr-event-02.jpg','kr-event-01.png','Akeila-photo3.jpg'
+  ];
+  const featured = document.getElementById('krFeatured');
+  const thumbsContainer = document.getElementById('krThumbs');
+  const counter = document.getElementById('krCounter');
+  if (!featured) return;
+  let current = 0;
+  let thumbStart = 0;
+
+  function updateFeatured(index) {
+    current = (index + photos.length) % photos.length;
+    featured.src = photos[current];
+    featured.alt = 'KR Events ' + (current + 1);
+    featured.style.transform = current === 0 ? 'scaleX(-1)' : '';
+    counter.textContent = (current + 1) + ' / ' + photos.length;
+    renderThumbs();
+  }
+
+  function renderThumbs() {
+    if (current < thumbStart) thumbStart = current;
+    if (current >= thumbStart + 4) thumbStart = current - 3;
+    thumbStart = Math.max(0, Math.min(thumbStart, photos.length - 4));
+    thumbsContainer.innerHTML = '';
+    for (let i = thumbStart; i < thumbStart + 4 && i < photos.length; i++) {
+      const div = document.createElement('div');
+      div.className = 'kr-thumb' + (i === current ? ' active' : '');
+      div.dataset.index = i;
+      const img = document.createElement('img');
+      img.src = photos[i];
+      img.alt = 'KR Events ' + (i + 1);
+      if (i === 0) img.style.transform = 'scaleX(-1)';
+      div.appendChild(img);
+      div.addEventListener('click', () => updateFeatured(i));
+      thumbsContainer.appendChild(div);
+    }
+  }
+
+  document.getElementById('krNext').addEventListener('click', () => updateFeatured(current + 1));
+  document.getElementById('krPrev').addEventListener('click', () => updateFeatured(current - 1));
+  renderThumbs();
+})();
+
+// Contact form
 function handleSubmit(e) {
   e.preventDefault();
   const btn = document.getElementById('submit-btn');
@@ -1607,6 +1594,7 @@ function handleSubmit(e) {
   }, 4000);
 }
 
+// Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function(e) {
     const target = document.querySelector(this.getAttribute('href'));
@@ -1617,14 +1605,13 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
+// Nav scroll
 const nav = document.querySelector('nav');
 window.addEventListener('scroll', () => {
-  if (window.scrollY > 80) {
-    nav.style.background = 'rgba(13,27,42,0.97)';
-  } else {
-    nav.style.background = 'rgba(13,27,42,0.92)';
-  }
+  nav.style.background = window.scrollY > 80 ? 'rgba(13,27,42,0.97)' : 'rgba(13,27,42,0.92)';
 });
 </script>
+
+
 </body>
 </html>
